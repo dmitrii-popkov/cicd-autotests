@@ -192,6 +192,25 @@ public class RequestTemplate {
 			.extract().response();
 	}
 
+	public static Response responseFromPostRequestWithoutBody(String url, String endpoint,
+															  Map<String, ?> pathParameters,
+															  Map<String, ?> queryParameters) {
+		return given()
+			.spec(new RequestSpecBuilder()
+				.log(LogDetail.ALL)
+				.setBaseUri(url)
+				.setRelaxedHTTPSValidation()
+				.addPathParams(pathParameters)
+				.addQueryParams(queryParameters)
+				.noContentType()
+				.build()).filter(getAllureRestAssured())
+			.when()
+			.post(endpoint)
+			.then()
+			.spec(getResponseSpecification())
+			.extract().response();
+	}
+
 	/**
 	 * Шаблон для получения ответа по POST-запросу с указанием типа содержимого и загрузкой файла.
 	 *

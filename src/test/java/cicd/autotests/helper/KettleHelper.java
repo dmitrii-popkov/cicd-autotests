@@ -1,6 +1,7 @@
 package cicd.autotests.helper;
 
 import cicd.autotests.dto.KettleInfo;
+import cicd.autotests.dto.SwitchMode;
 import cicd.autotests.service.kettle.KettleRequest;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Step;
@@ -59,5 +60,20 @@ public class KettleHelper {
 		Allure.step("Получение списка инедтификаторов доступных чайников прошло успешно");
 
 		return availableKettlesInfo;
+	}
+
+	@Step("Установка температуры нагрева [{temperature}] чайника [{id}]")
+	public static void setHeatingTemperature(String url, String id, int temperature) {
+		log.info("Setting kettle [{}] temperature to [{}]", id, temperature);
+
+		Response response = KettleRequest.setKettleHeatingTemperatureRequest(url, id, temperature);
+
+
+		assertThat(response.statusCode())
+			.withFailMessage("Код ответа при установке температуры нагрева должен быть 200")
+			.isEqualTo(200);
+
+		log.info("Setting kettle temperature completed successfully");
+		Allure.step("Установка температуры нагрева прошла успешно");
 	}
 }

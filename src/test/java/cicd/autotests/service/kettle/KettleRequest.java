@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.Map;
 
 import static cicd.autotests.config.TestProperties.GET_AVAILABLE_KETTLES;
+import static cicd.autotests.config.TestProperties.HEAT_KETTLE;
 import static cicd.autotests.config.TestProperties.TURN_OFF_KETTLE;
 import static cicd.autotests.config.TestProperties.TURN_ON_KETTLE;
 import static cicd.autotests.service.DefaultRequestSpecification.getRequestSpecification;
@@ -37,5 +38,14 @@ public class KettleRequest {
 		log.info("Creating request to get available kettles ids [{}]", url);
 
 		return RequestTemplate.responseFromGetRequest(getRequestSpecification(url, getSessionId(url)), GET_AVAILABLE_KETTLES);
+	}
+
+	@Step("Выполнение запроса на получение идентификаторов доступных чайников [{url}]")
+	public static Response setKettleHeatingTemperatureRequest(String url, String id, int temperature) {
+		log.info("Creating request to get available kettles ids [{}]", url);
+
+		return RequestTemplate.responseFromPostRequestWithoutBody(url, HEAT_KETTLE,
+			Map.of("id", id),
+			Map.of("temp", temperature));
 	}
 }

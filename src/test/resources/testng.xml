@@ -1,8 +1,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="Tests" verbose="1" time-out="7200000">
-    <test name="Test case 677468: License upload restrictions">
+    <test name="Test case 1: Test switch kettle">
         <classes>
             <class name="cicd.autotests.test.scenario.TestSwitchKettleState"/>
+        </classes>
+    </test>
+    <test name="Test case 2: Test kettle heating">
+        <classes>
+            <class name="cicd.autotests.test.scenario.TestKettleHeating"/>
         </classes>
     </test>
 </suite>

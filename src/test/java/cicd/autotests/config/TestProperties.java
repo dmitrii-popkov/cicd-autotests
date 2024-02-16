@@ -20,4 +20,5 @@ public abstract class TestProperties {
 	public static final String TURN_ON_KETTLE = ENDPOINTS.getTurnOn();
 	public static final String TURN_OFF_KETTLE = ENDPOINTS.getTurnOff();
 	public static final String GET_AVAILABLE_KETTLES = ENDPOINTS.getAvailableKettles();
+	public static final String HEAT_KETTLE = ENDPOINTS.getHeat();
 }

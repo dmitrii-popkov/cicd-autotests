@@ -2,6 +2,7 @@ endpoint:
   turnOn: api/kettle/{id}/on
   turnOff: api/kettle/{id}/off
   availableKettles: api/kettle
+  heat: api/kettle/{id}/heat
 auth:
   standaloneUrl: http://192.168.0.100:8081
   mqttUrl: tcp://192.168.0.100:1883

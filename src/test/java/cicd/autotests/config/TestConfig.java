@@ -19,6 +19,7 @@ public class TestConfig {
 		private String turnOn;
 		private String turnOff;
 		private String availableKettles;
+		private String heat;
 	}
 
 	@Getter
